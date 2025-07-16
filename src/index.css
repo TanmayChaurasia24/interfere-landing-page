@@ -1,0 +1,183 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 10 10% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 267 84% 68%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 217 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-space;
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, rgba(10, 10, 10, 1) 70%);
+  }
+}
+
+@layer components {
+  .glitch-text {
+    position: relative;
+    color: #ffffff;
+    text-shadow: 
+      0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+      0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    animation: glitch 500ms infinite;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    animation: glitch 500ms infinite;
+    color: rgba(255, 0, 0, 0.75);
+    z-index: -1;
+  }
+
+  .glitch-text::after {
+    animation: glitch 500ms infinite reverse;
+    color: rgba(0, 255, 255, 0.75);
+    z-index: -2;
+  }
+
+  .cyber-gradient {
+    background: linear-gradient(135deg, #8B5CF6 0%, #F97316 50%, #10B981 100%);
+  }
+
+  .cyber-border {
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, #8B5CF6, #F97316, #10B981) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .floating-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(139, 92, 246, 0.3), rgba(249, 115, 22, 0.3));
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .shape:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .shape:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    top: 70%;
+    left: 80%;
+    animation-delay: 2s;
+  }
+
+  .shape:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    top: 40%;
+    left: 90%;
+    animation-delay: 4s;
+  }
+
+  .neon-glow {
+    box-shadow: 
+      0 0 3px rgba(139, 92, 246, 0.3),
+      0 0 6px rgba(139, 92, 246, 0.3),
+      0 0 9px rgba(139, 92, 246, 0.3);
+  }
+
+  .neon-glow-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .neon-glow-hover:hover {
+    box-shadow: 
+      0 0 5px rgba(139, 92, 246, 0.5),
+      0 0 10px rgba(139, 92, 246, 0.5),
+      0 0 15px rgba(139, 92, 246, 0.5),
+      0 0 20px rgba(139, 92, 246, 0.5);
+  }
+
+  .text-glow {
+    text-shadow: 
+      0 0 5px rgba(139, 92, 246, 0.4),
+      0 0 10px rgba(139, 92, 246, 0.3),
+      0 0 15px rgba(139, 92, 246, 0.2);
+  }
+
+  .hover-float {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-float:hover {
+    transform: translateY(-10px);
+  }
+}
